@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+#nameDiv {
+	position: absolute;
+	width: 200px;
+	height: 32px;
+	z-index: 1;
+	left: 777px;
+	top: 98px;
+}
+#pasdDiv {
+	position: absolute;
+	width: 200px;
+	height: 32px;
+	z-index: 1;
+	left: 777px;
+	top: 145px;
+	//background-color:#999;
+}
+#pasdsDiv {
+	position: absolute;
+	width: 200px;
+	height: 32px;
+	z-index: 1;
+	left: 792px;
+	top: 190px;
+	//background-color:#999;
+}
+#phoneDiv {
+	position: absolute;
+	width: 200px;
+	height: 32px;
+	z-index: 1;
+	left: 792px;
+	top: 235px;
+	//background-color:#999;
+}
+#emailDiv {
+	position: absolute;
+	width: 200px;
+	height: 32px;
+	z-index: 1;
+	left: 770px;
+	top: 282px;
+	//background-color:#999;
+}
+</style>
+</head>
+<script>
+
+function test(ch){
+	ch.value='';
+	}
+
+function checkName(){
+	var name=document.getElementById('username').value;
+	var msg='';
+	var flag=true;
+	if(name.length==0){
+		msg='姓名无输入';
+		flag=false;
+	}else if(name.length>9){
+		msg='用户名输入过长';
+		flag=false;
+		}
+   document.getElementById('nameDiv').innerHTML='<font color="#FF0000" >'+msg+'</font>';
+	return flag;
+	}
+function checkPassword(){
+	var pasd=document.getElementById('password').value;
+	var msg='';
+	var flag=true;
+	if(pasd.length==0){
+		msg='密码无输入';
+		flag=false;
+	}else if(pasd.length<6){
+		msg='密码输入过短';
+		flag=false;
+		}
+   document.getElementById('pasdDiv').innerHTML='<font color="#FF0000" >'+msg+'</font>';
+	return flag;
+	}
+function checkPasswords(){
+	var pasd=document.getElementById('password').value;
+	var pasds=document.getElementById('passwords').value;
+	var msg='';
+	var flag=true;
+	if(pasds.length==0){
+		msg='确认密码无输入';
+		flag=false;
+	}else if(pasd!=pasds){
+		msg='两次密码输入不一致';
+		flag=false;
+		}
+   document.getElementById('pasdsDiv').innerHTML='<font color="#FF0000" >'+msg+'</font>';
+	return flag;
+	}
+function checkPhone(){
+	var phone=document.getElementById('phone').value;
+	var msg='';
+	var flag=true;
+	if(phone.length!=11){
+		msg='请输入13位手机号码';
+		flag=false;
+	}else if(phone.length==0){
+		msg='手机号无输入';
+		flag=false;
+		}
+   document.getElementById('phoneDiv').innerHTML='<font color="#FF0000" >'+msg+'</font>';
+	return flag;
+	}
+function checkEmail(){
+	var email=document.getElementById('email').value;
+	var msg='';
+	var flag=true;
+	if(email.length==0){
+		msg='邮箱无输入';
+		flag=false;
+	}
+   document.getElementById('emailDiv').innerHTML='<font color="#FF0000" >'+msg+'</font>';
+	return flag;
+}
+function checkAll(){
+	return checkName()&&checkPassword()&&checkPasswords()&&checkPhone()&&checkEmail();
+	}
+
+</script>
+<body>
+<center>
+<h1>注册</h1>
+<hr />
+<form action="" method="post" onsubmit="return checkAll()">
+<font size="+2" >用&nbsp;户&nbsp;名：</font><input type="text" id="username" value="不能超过9位"  onfocus="test(this)" onblur="checkName()"/>
+<div id="nameDiv"></div>
+<br /><br />
+<font size="+2" >设置密码：</font><input type="password" id="password" 
+ onfocus="test(this)" onblur="checkPassword()"/>
+<div id="pasdDiv"></div>
+<br /><br />
+<font size="+2" >确认密码：</font><input type="password" id="passwords"
+onfocus="test(this)" onblur="checkPasswords()" />
+<div id="pasdsDiv"></div>
+<br /><br />
+<font size="+2" >手&nbsp;&nbsp;&nbsp;&nbsp;机：</font><input type="number" id="phone"
+ onfocus="test(this)" onblur="checkPhone()"/>
+<div id="phoneDiv"></div>
+<br /><br />
+<font size="+2" >邮&nbsp;&nbsp;&nbsp;&nbsp;箱：</font><input type="email" id="email" 
+ onfocus="test(this)" onblur="checkEmail()" />
+<div id="emailDiv"></div>
+<br /><br />
+<font size="+2" >验&nbsp;证&nbsp;码：</font><input type="text"  onfocus="test(this)"/>
+<br /><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" />
+</form>
+</center>
+</body>
+</html>
